@@ -10,8 +10,11 @@ export class WebService{
    data: Object;
    BASE_URL= 'http://localhost:9634/api';
 
-   private messages: Array<Message> = [];
-   messageSubject = new Subject();
+   private messageStore: Array<Message> = [];
+   
+   private messageSubject = new Subject();
+
+   messages = this.messageSubject.asObservable();
 
    constructor(private http:HttpClient){
       this.getMessages('');
@@ -21,8 +24,8 @@ export class WebService{
          user = (user) ? '/' + user : '';
          this.http.get(this.BASE_URL +'/messages'+ user).subscribe(
           (data:Message) => {
-              this.messages = <any>data;
-              this.messageSubject.next(this.messages);
+              this.messageStore = <any>data;
+              this.messageSubject.next(this.messageStore);
             }, error=>{
                console.log("Unable to get messages");
             });
@@ -35,7 +38,9 @@ export class WebService{
       console.log("Post");
       var response = await this.http.post(this.BASE_URL + '/messages', message).toPromise();
 
-      this.messages.push(<Message>response)
+      this.messageStore.push(<Message>response);
+
+      this.messageSubject.next(this.messageStore);
 
    } catch (error) {
       console.log(error.message);
