@@ -37,9 +37,14 @@ export class NewMessageComponent{
          /*   this.webService.postMessages(this.message).subscribe((res) => {
 
           }); */
+          try {
 
-          this.webService.postMessages(this.message);
+              this.webService.postMessages(this.message);
 
+          } catch (error) {
+              console.log("Unable to post message "+ error.message);
+          }
+          
          // this.onPosted.emit(this.message);
     }
 }
