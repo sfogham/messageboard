@@ -21,6 +21,8 @@
   <mat-form-field  class="example-full-width">
     <input style="widows: 350px;" type="password" [ngClass]="{'error': isValid('confirmPassword')}" matInput placeholder="Confirm Password" formControlName="confirmPassword">
   </mat-form-field>
+  <br>
+  <span *ngIf="form.errors?.matchingFields">Passwords do not match</span>
 
 <br>
 
