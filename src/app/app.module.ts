@@ -19,6 +19,10 @@ import { HomeComponent } from "./home.component";
 var routes = [{
   path:'',
   component: HomeComponent
+},
+{
+  path:'messages',
+  component: MessagesComponent
 }];
 
 @NgModule({
