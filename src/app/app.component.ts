@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-
-
+import { NavComponent } from "./nav.component";
 
 @Component({
   selector: 'app-root',
-  template: `<h1>Message Board</h1>
+  template: `
+              <nav></nav>
               <new-message></new-message>
               <messages></messages>`,
 

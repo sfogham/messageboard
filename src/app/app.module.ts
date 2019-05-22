@@ -4,21 +4,22 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule} from '@angular/material';
 import { FormsModule } from "@angular/forms";
 import { MatInputModule} from '@angular/material/input';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages.component';
 import { WebService } from './web.service';
 import { NewMessageComponent } from './new-message.component';
+import { NavComponent } from "./nav.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     MessagesComponent,
-    NewMessageComponent
+    NewMessageComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,7 @@ import { NewMessageComponent } from './new-message.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatSnackBarModule,
+    MatToolbarModule,
     HttpClientModule,
   ],
   providers: [WebService],
