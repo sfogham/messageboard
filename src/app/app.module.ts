@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule} from '@angular/material';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule} from '@angular/material/input';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
@@ -48,12 +48,14 @@ var routes = [{
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
+    
   ],
   providers: [WebService],
   bootstrap: [AppComponent]
