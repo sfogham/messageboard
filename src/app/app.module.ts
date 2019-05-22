@@ -4,6 +4,7 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule} from '@angular/material';
 import { FormsModule } from "@angular/forms";
 import { MatInputModule} from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -27,6 +28,7 @@ import { NewMessageComponent } from './new-message.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatSnackBarModule,
     HttpClientModule,
   ],
   providers: [WebService],

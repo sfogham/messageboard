@@ -22,8 +22,6 @@ import { WebService } from './web.service';
 })
 export class NewMessageComponent{
 
-    // @Output() onPosted = new EventEmitter();
-
     constructor(private webService:WebService){}
     
     message={
@@ -32,11 +30,9 @@ export class NewMessageComponent{
     }
 
     post(){
+        
         console.log(this.message);
 
-         /*   this.webService.postMessages(this.message).subscribe((res) => {
-
-          }); */
           try {
 
               this.webService.postMessages(this.message);
@@ -44,7 +40,5 @@ export class NewMessageComponent{
           } catch (error) {
               console.log("Unable to post message "+ error.message);
           }
-          
-         // this.onPosted.emit(this.message);
     }
 }
