@@ -11,19 +11,17 @@ export class WebService{
    messages: Array<Message> = [];
 
    constructor(private http:HttpClient){
-      this.getMessages();
+      this.getMessages('');
    }
 
-   getMessages(){
-      
-   try {
-
-       this.http.get(this.BASE_URL +'/messages')
-    .subscribe((data:Message) => this.messages = <any>data);
-
-   } catch (error) {
-         console.log("Unable to get messages");
-      }
+   getMessages(user){
+         user = (user) ? '/' + user : '';
+         this.http.get(this.BASE_URL +'/messages'+ user).subscribe(
+          (data:Message) => {
+              this.messages = <any>data;
+            }, error=>{
+               console.log("Unable to get messages");
+            });
    }
 
   async postMessages(message){
