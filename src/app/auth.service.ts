@@ -9,7 +9,7 @@ export class AuthService{
     constructor(private httpClient:HttpClient){ }
 
     register(user){
-            
+            delete user.confirmPassword;
         this.httpClient.post(this.BASE_URL+'/register', user).subscribe();
     }
 }
