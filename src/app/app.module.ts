@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages.component';
 import { WebService } from './web.service';
+import { AuthService } from "./auth.service";
 import { NewMessageComponent } from './new-message.component';
 import { NavComponent } from "./nav.component";
 import { HomeComponent } from "./home.component";
@@ -57,7 +58,7 @@ var routes = [{
     RouterModule.forRoot(routes)
     
   ],
-  providers: [WebService],
+  providers: [WebService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
