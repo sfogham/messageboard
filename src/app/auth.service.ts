@@ -38,4 +38,10 @@ export class AuthService{
             this.router.navigate(['/']) // Redirect to default page
         });
     }
+
+    logout(){
+
+        localStorage.removeItem(this.TOKEN_KEY);
+        localStorage.removeItem(this.NAME_KEY);
+    }
 }
