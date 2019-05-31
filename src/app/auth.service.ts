@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http';
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthService{
@@ -8,7 +9,7 @@ export class AuthService{
     NAME_KEY = 'name';
     TOKEN_KEY = 'token';
 
-    constructor(private httpClient:HttpClient){ }
+    constructor(private httpClient: HttpClient, private router: Router){ }
     
     get name(){
         return localStorage.getItem(this.NAME_KEY);
@@ -26,9 +27,15 @@ export class AuthService{
             var stringValue = JSON.stringify(res);
             var jsonObject = JSON.parse(stringValue);
 
+            // We check if the user is authenticated, i.e has a token
+            if(!jsonObject['token']){
+                return;
+            }
+
             localStorage.setItem(this.TOKEN_KEY, jsonObject['token']);
             localStorage.setItem(this.NAME_KEY, jsonObject['firstName']);
 
+            this.router.navigate(['/']) // Redirect to default page
         });
     }
 }
