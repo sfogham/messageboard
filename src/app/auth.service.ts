@@ -8,8 +8,14 @@ export class AuthService{
 
     constructor(private httpClient:HttpClient){ }
 
-    register(user){
+    register(user) {
             delete user.confirmPassword;
-        this.httpClient.post(this.BASE_URL+'/register', user).subscribe();
+        this.httpClient.post(this.BASE_URL+'/register', user).subscribe(res=>{
+         
+            var stringValue = JSON.stringify(res);
+            var jsonObject = JSON.parse(stringValue);
+
+            localStorage.setItem('token', jsonObject['token']);
+        });
     }
 }
