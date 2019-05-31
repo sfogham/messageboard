@@ -16,6 +16,8 @@ export class AuthService{
             var jsonObject = JSON.parse(stringValue);
 
             localStorage.setItem('token', jsonObject['token']);
+            localStorage.setItem('name', jsonObject['firstName']);
+
         });
     }
 }
