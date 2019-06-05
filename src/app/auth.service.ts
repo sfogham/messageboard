@@ -24,7 +24,25 @@ export class AuthService{
           
             this.httpClient.post(this.BASE_URL+'/register', user).subscribe(res=>{
          
-            var stringValue = JSON.stringify(res);
+            this.authenticate(res);
+        });
+    }
+
+    logout(){
+
+        localStorage.removeItem(this.TOKEN_KEY);
+        localStorage.removeItem(this.NAME_KEY);
+    }  
+
+    login(loginData){
+      this.httpClient.post(this.BASE_URL+'/login', loginData).subscribe(res=>{
+        this.authenticate(res);
+      });
+    }
+
+    authenticate(res){
+        
+        var stringValue = JSON.stringify(res);
             var jsonObject = JSON.parse(stringValue);
 
             // We check if the user is authenticated, i.e has a token
@@ -36,18 +54,5 @@ export class AuthService{
             localStorage.setItem(this.NAME_KEY, jsonObject['firstName']);
 
             this.router.navigate(['/']) // Redirect to default page
-        });
-    }
-
-    logout(){
-
-        localStorage.removeItem(this.TOKEN_KEY);
-        localStorage.removeItem(this.NAME_KEY);
-    }
-
-    login(loginData){
-      this.httpClient.post(this.BASE_URL+'/login', loginData).subscribe(res=>{
-        console.log(res);
-      });
     }
 }
