@@ -26,6 +26,6 @@ export class LoginComponent{
     }
 
     login(){
-        console.log(this.loginData);
+        this.auth.login(this.loginData);
     }
 }

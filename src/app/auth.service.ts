@@ -44,4 +44,10 @@ export class AuthService{
         localStorage.removeItem(this.TOKEN_KEY);
         localStorage.removeItem(this.NAME_KEY);
     }
+
+    login(loginData){
+      this.httpClient.post(this.BASE_URL+'/login', loginData).subscribe(res=>{
+        console.log(res);
+      });
+    }
 }
