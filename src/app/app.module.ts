@@ -17,6 +17,7 @@ import { NewMessageComponent } from './new-message.component';
 import { NavComponent } from "./nav.component";
 import { HomeComponent } from "./home.component";
 import { RegisterComponent } from "./register.component";
+import { LoginComponent } from "./login.component";
 
 var routes = [{
   path:'',
@@ -33,6 +34,9 @@ var routes = [{
 {
   path:'register',
   component: RegisterComponent
+},{
+  path:'login',
+  component: LoginComponent
 }];
 
 @NgModule({
@@ -42,7 +46,8 @@ var routes = [{
     NewMessageComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
